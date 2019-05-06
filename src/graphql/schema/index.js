@@ -16,7 +16,6 @@ export default buildSchema(`
     input TeamInput {        
         name: String!
         img: String!
-        players: [Player!]
     }
 
     input PlayerInput {
