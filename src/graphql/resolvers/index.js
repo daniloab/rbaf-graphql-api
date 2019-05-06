@@ -21,5 +21,17 @@ export default {
         } catch (err) {
             
         }
+    },
+    createPlayer: async args => {
+        try {
+            const player = new Player({
+                name: args.name
+            })
+
+            const newPlayer = await player.save()
+            return newPlayer
+        } catch (err) {
+            
+        }
     }
 }
