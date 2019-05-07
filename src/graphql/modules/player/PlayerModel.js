@@ -7,6 +7,6 @@ const playerSchema = new Schema({
         type: String,
         required: 'name is required',
     },   
-}, {timestamps: true});
+}, { timestamps: true });
 
 export default mongoose.model('Player', playerSchema)

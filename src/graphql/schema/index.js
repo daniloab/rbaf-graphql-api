@@ -1,35 +1,67 @@
-import { buildSchema } from 'graphql'
+import { GraphQLSchema } from 'graphql'
 
-export default buildSchema(`
-    type Team {
-        _id: ID!
-        name: String!
-        img: String!
-        players: [Player!]
-    }
+import QueryType from '../types/QueryType'
+import MutationType from '../types/MutationType'
 
-    type Player {
-        _id: ID!
-        name: String!
-    }
+export const schema = new GraphQLSchema({
+    query: QueryType,
+    mutation: MutationType
+})
 
-    input TeamInput {        
-        name: String!
-        img: String!
-    }
+// import { buildSchema } from 'graphql'
 
-    input PlayerInput {
-        name: String!
-    }
+// export default buildSchema(`
+//     type Player {
+//         _id: ID!
+//         name: String!
+//     }  
 
+//     type Team {
+//         _id: ID!
+//         name: String!
+//         img: String!
+//         players: [Player!]
+//     }
 
-    type Mutation {
-        createTeam(teamInput: TeamInput): Team
-        createPlayer(playerInput: PlayerInput): Player
-    }
+//     type User {
+//         id: ID!
+//         name: String!
+//         username: String!
+//         email: String!
+//         password: String!
+//     }
+
+//     input LoginInput {
+//         email: String!
+//         passwortd: String!
+//     }
+
+//     input PlayerInput {
+//         name: String!
+//     }
+
+//     input SignUpInput {
+//         name: String!
+//         username: String!
+//         email: String!
+//         password: String!
+//     }
+
+//     input TeamInput {        
+//         name: String!
+//         img: String!
+//     }
     
-    type Query {
-        teams: [Team!]!
-        players: [Player!]!
-    }
-`)
+//     type Query {
+//         me: [User]
+//         players: [Player!]!
+//         teams: [Team!]!
+//     } 
+
+//     type Mutation {
+//         createTeam(teamInput: TeamInput): Team
+//         createPlayer(playerInput: PlayerInput): Player
+//         login(loginInput: LoginInput): String
+//         signup(signUpInput: SignUpInput): String
+//     }
+// `)

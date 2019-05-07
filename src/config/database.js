@@ -8,8 +8,7 @@ const initDB = () => {
       )
 
     mongoose.connection.once('open', () => {
-        console.log('Connected to Database')
+        const info = mongoose.connections[0];
+        console.log(`Connected to  ${info.host}:${info.port}/${info.name}`)        
     })
 }
-
-export default initDB

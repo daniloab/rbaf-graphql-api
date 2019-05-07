@@ -1,34 +1,23 @@
-require('dotenv').config()
-import Koa from 'koa'
-import GraphQLHTTP from 'koa-graphql'
-import Router from 'koa-router'
-import cors from '@koa/cors'
-import bodyParser from 'koa-bodyparser'
-import mount from 'koa-mount'
+import { } from 'graphql'
+import { createServer } from 'http'
 
-import graphQLSchema from './graphql/schema'
-import graphQLResolvers from './graphql/resolvers'
-
-const GRAPHQL_PORT = 9001
-const app = new Koa()
-const router = new Router();
-
+import app from './graphql/app'
 import initDB from './config/database'
-initDB()
 
-app.use(cors())
-app.use(bodyParser())
+const graphqlPort = 9001
 
-app.use(mount('/graphql', GraphQLHTTP({
-    schema: graphQLSchema,
-    rootValue: graphQLResolvers,
-    graphiql: true
-})));
+(async () => {
+    // starting db
+    try {
+        await initDB()
+    } catch (error) {
+        console.error('Unable to connect to database')
+        process.exit(1);
+    }
 
-app.listen(GRAPHQL_PORT, () => console.log(
-    `GraphQL Server is now running on http://localhost:${GRAPHQL_PORT}/graphql`
-))
+    const server = createServer(app.callback())
 
-app.on('error', err => {
-    log.error('server error', err)
+    server.listen(graphqlPort, () => console.log(
+        `GraphQL Server is now running on http://localhost:${GRAPHQL_PORT}/graphql`
+    ))
 })

@@ -1,38 +1,11 @@
-import Team from '../../models/team'
-import Player from '../../models/player'
-import User from '../modules/user/UserModel'
+import User from '../../modules/user/UserModel'
+import bcrypt from 'bcrypt'
+import jsonwebtoken from 'jsonwebtoken'
+import dotenv from 'dotenv'
 
-import UserResolver from './user'
+dotenv.config()
 
 export default {
-    teams: async () => {
-        const teams = await Team.find({})
-        return teams
-    },
-    players: async () => {
-        const players = await Player.find({})
-        return players
-    },
-    createTeam: async args => {
-        const team = new Team({
-            name: args.teamInput.name,
-            img: args.teamInput.img
-        })
-        const newTeam = await team.save()
-        return newTeam
-    },
-    createPlayer: async args => {
-        try {
-            let player = new Player({
-                name: args.playerInput.name
-            })
-
-            const newPlayer = await player.save()
-            return newPlayer
-        } catch (error) {
-            
-        }
-    },
     me: async (args, { user }) => {
         if (!user) {
             throw new Error('You are not authenticated!')
@@ -61,7 +34,7 @@ export default {
         )
     },
     signup: async args => {
-        console.log('signup', args)
+        console.log('login')
         const user = await User.create({
             name: args.signupIput.name,
             username: args.signupIput.username,
