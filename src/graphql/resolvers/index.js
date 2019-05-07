@@ -3,35 +3,33 @@ import Player from '../../models/player'
 
 export default {
     teams: async () => {
+        console.log('teams')
         const teams = await Team.find({})
         return teams
     },
     players: async () => {
+        console.log('players')
         const players = await Player.find({})
         return players
     },
-    createTeam: async (args) => {
-        try {
-            const team = new Team({
-                name: args.name,
-                img: args.img
-            })
-            const newTeam = await team.save()
-            return newTeam            
-        } catch (err) {
-            
-        }
+    createTeam: async args => {
+        const team = new Team({
+            name: args.teamInput.name,
+            img: args.teamInput.img
+        })
+        const newTeam = await team.save()
+        return newTeam
     },
     createPlayer: async args => {
         try {
-            const player = new Player({
-                name: args.name
+            let player = new Player({
+                name: args.playerInput.name
             })
 
             const newPlayer = await player.save()
             return newPlayer
-        } catch (err) {
-            
+        } catch (error) {
+
         }
     }
 }

@@ -22,18 +22,14 @@ export default buildSchema(`
         name: String!
     }
 
-    type RootQuery {
-        teams: [Team!]!
-        players: [Player!]!
-    }
 
-    type RootMutation {
+    type Mutation {
         createTeam(teamInput: TeamInput): Team
         createPlayer(playerInput: PlayerInput): Player
     }
-
-    schema {
-        query: RootQuery
-        mutation: RootMutation
-      }
+    
+    type Query {
+        teams: [Team!]!
+        players: [Player!]!
+    }
 `)
