@@ -29,7 +29,7 @@ export default {
             const newPlayer = await player.save()
             return newPlayer
         } catch (error) {
-
+            
         }
     }
 }
