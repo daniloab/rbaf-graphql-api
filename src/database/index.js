@@ -1,5 +1,4 @@
 import mongoose from 'mongoose'
-import dotenv from 'dotenv'
 
 const initDB = () => {
     mongoose.connect(
@@ -7,8 +6,12 @@ const initDB = () => {
         { useNewUrlParser: true }
       )
 
-    mongoose.connection.once('open', () => {
-        console.log('Connected to Database')
+    mongoose.connection
+    .on('error', error => console.log(error))    
+    .once('open', () => {
+        // const info = mongoose.connections[0];
+        // console.log(`Connected to  ${info.host}:${info.port}/${info.name}`)     
+        console.log('Connected to Database')   
     })
 }
 
