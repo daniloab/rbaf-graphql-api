@@ -4,13 +4,9 @@ import GraphQLHTTP from 'koa-graphql'
 import Router from 'koa-router'
 import cors from '@koa/cors'
 import bodyParser from 'koa-bodyparser'
-import mount from 'koa-mount'
 
-import graphQLSchema from './graphql/schema'
-import graphQLResolvers from './graphql/resolvers'
-import { getUser } from './graphql/auth';
-
-import { schema } from './graphql/schema'
+import { getUser } from './auth';
+import { schema } from './schema'
 
 const app = new Koa()
 const router = new Router();
@@ -41,7 +37,7 @@ const graphqlSettingsPerReq = async req => {
 
 const graphqlServer = GraphQLHTTP(graphqlSettingsPerReq)
 
-router.all('/grpahql', graphqlServer)
+router.all('/graphql', graphqlServer)
 
 app.use(bodyParser())
 app.use(cors())

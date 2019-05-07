@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import { User } from './model'
+import { User } from './models'
 import { jwtSecret } from './config'
 
 export async function getUser (token) {

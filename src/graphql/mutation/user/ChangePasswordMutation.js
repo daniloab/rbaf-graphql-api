@@ -2,7 +2,7 @@ import { GraphQLString, GraphQLNonNull } from 'graphql'
 import { mutationWithClientMutationId } from 'graphql-relay'
 
 import { User } from '../../models/index'
-import { UserLoader } from '../loader'
+// import { UserLoader } from '../loader'
 
 export default mutationWithClientMutationId({
   name: 'ChangePassword',
@@ -40,9 +40,9 @@ export default mutationWithClientMutationId({
       type: GraphQLString,
       resolve: ({ error }) => error,
     },
-    me: {
-      type: User,
-      resolve: (obj, args, context) => UserLoader.load(context, context.user.id),
-    },
+    // me: {
+    //   type: User,
+    //   resolve: (obj, args, context) => UserLoader.load(context, context.user.id),
+    // },
   },
 })

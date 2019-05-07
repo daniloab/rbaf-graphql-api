@@ -1,12 +1,13 @@
+import dotenv from 'dotenv'
 import { } from 'graphql'
 import { createServer } from 'http'
 
 import app from './graphql/app'
-import initDB from './config/database'
-
-const graphqlPort = 9001
+import initDB from './database'
 
 (async () => {
+    
+dotenv.config()
     // starting db
     try {
         await initDB()
@@ -17,7 +18,7 @@ const graphqlPort = 9001
 
     const server = createServer(app.callback())
 
-    server.listen(graphqlPort, () => console.log(
-        `GraphQL Server is now running on http://localhost:${GRAPHQL_PORT}/graphql`
+    server.listen(process.env.GRAPHQL_PORT, () => console.log(
+        `GraphQL Server is now running on http://localhost:${process.env.GRAPHQL_PORT}/graphql`
     ))
-})
+})()
