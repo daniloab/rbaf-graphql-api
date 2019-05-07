@@ -32,9 +32,3 @@ UserSchema.methods = {
   };
 
 export default mongoose.model('User', UserSchema)
-
-
-// name: String!
-// username: String!
-// email: String!
-// password: String!

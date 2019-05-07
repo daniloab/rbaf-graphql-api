@@ -3,7 +3,7 @@ import Team from '../modules/team/TeamModel'
 import Player from '../modules/player/PlayerModel'
 
 export default {
-    Player,
-    Team,
-    User
+    Player: Player,
+    Team: Team,
+    User: User
 }
