@@ -2,6 +2,7 @@ import { GraphQLObjectType, GraphQLList, GraphQLString, GraphQLNonNull, GraphQLI
 import {fromGlobalId} from 'graphql-relay'
 
 import UserType from '../modules/user/UserType'
+import User from '../modules/user/UserModel'
 
 export default new GraphQLObjectType({
     name: 'Query',
@@ -10,7 +11,7 @@ export default new GraphQLObjectType({
         users: {
             type: new GraphQLList(UserType),
             resolve: () => {
-                return UserType.find({})
+                return User.find({})
             }
         }
     })

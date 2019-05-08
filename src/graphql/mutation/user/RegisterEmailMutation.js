@@ -1,7 +1,6 @@
 import { GraphQLString, GraphQLNonNull } from 'graphql'
 import { mutationWithClientMutationId } from 'graphql-relay'
 
-// import { User } from '../../models'
 import User from '../../modules/user/UserModel'
 import { generateToken } from '../../auth'
 
