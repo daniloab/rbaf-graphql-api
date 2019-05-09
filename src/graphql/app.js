@@ -44,16 +44,3 @@ app.use(cors())
 app.use(router.routes()).use(router.allowedMethods());
 
 export default app
-// app.use(mount('/graphql', GraphQLHTTP({
-//     schema: graphQLSchema,
-//     rootValue: graphQLResolvers,
-//     graphiql: true
-// })));
-
-// app.listen(GRAPHQL_PORT, () => console.log(
-//     `GraphQL Server is now running on http://localhost:${GRAPHQL_PORT}/graphql`
-// ))
-
-// app.on('error', err => {
-//     log.error('server error', err)
-// })
