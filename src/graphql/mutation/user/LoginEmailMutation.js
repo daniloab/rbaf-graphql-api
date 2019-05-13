@@ -26,17 +26,6 @@ export default mutationWithClientMutationId({
       }
     }
 
-    // const correctPassword = await bcrypt.compareSync(password, user.password);
-    // const correctPassword = user.authenticate(password)
-
-    // console.log(correctPassword)
-    // if (!correctPassword) {
-    //   return {
-    //     token: null,
-    //     error: 'INVALID_EMAIL_PASSWORD',
-    //   }
-    // }
-
     return {
       token: generateToken(user),
       error: null,
