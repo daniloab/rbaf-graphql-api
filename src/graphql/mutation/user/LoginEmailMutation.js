@@ -1,5 +1,6 @@
 import { GraphQLString, GraphQLNonNull } from 'graphql'
 import { mutationWithClientMutationId } from 'graphql-relay'
+import bcrypt from 'bcrypt'
 
 import User from '../../modules/user/UserModel'
 import { generateToken } from '../../auth'
@@ -16,18 +17,9 @@ export default mutationWithClientMutationId({
     },
   },
   mutateAndGetPayload: async ({ email, password }) => {
-    const user = await User.findOne({ email: email.toLowerCase() })
+    const user = await User.findOne({ email: email.toLowerCase(), password })
     
     if (!user) {
-      return {
-        token: null,
-        error: 'INVALID_EMAIL_PASSWORD',
-      }
-    }
-
-    const correctPassword = user.authenticate(password)
-    console.log(correctPassword)
-    if (!correctPassword) {
       return {
         token: null,
         error: 'INVALID_EMAIL_PASSWORD',

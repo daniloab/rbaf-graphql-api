@@ -1,13 +1,16 @@
 import dotenv from 'dotenv'
-import { } from 'graphql'
 import { createServer } from 'http'
+import log4js from './shared/logger';
 
 import app from './graphql/app'
 import initDB from './database'
+import { environment, serverConf } from './shared/index'
+
+var logger = log4js.getLogger();
 
 (async () => {
-    
-dotenv.config()
+
+    dotenv.config()
     // starting db
     try {
         await initDB()
@@ -18,7 +21,11 @@ dotenv.config()
 
     const server = createServer(app.callback())
 
-    server.listen(process.env.GRAPHQL_PORT, () => console.log(
-        `GraphQL Server is now running on http://localhost:${process.env.GRAPHQL_PORT}/graphql`
-    ))
+    server.listen(process.env.GRAPHQL_PORT, () => {
+        logger.info('##########################################################');
+        logger.info('#####               STARTING SERVER                  #####');
+        logger.info('##########################################################\n');
+        logger.info(`App running on ${environment.toUpperCase()} mode and listening on port ${serverConf.SERVER_PORT} ...`);
+        logger.info(`GraphQL Server is now running on http://localhost:${process.env.GRAPHQL_PORT}/graphql`);
+    })
 })()
