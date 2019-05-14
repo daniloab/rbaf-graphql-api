@@ -31,7 +31,21 @@ RBFA API is an api to help teams from football in brazil to managed his dailies 
 	    document
 	    
 	  }
-	}```
+    }
+```
+- By Id
+	```
+query{
+	  playerById(_id: "5cdabddae1f5361d8c39aa79"){
+		_id
+		status
+		name
+		lastname
+		position
+		document
+	  }
+}
+```
 ### Summary
 _building, almost there ♥_
 

@@ -30,10 +30,10 @@ export default new GraphQLObjectType({
                 const users = await User.find({})
                 return users.map(m => {
                     m._id,
-                    m.name,
-                    m.username,
-                    m.email,             
-                    m.password = null
+                        m.name,
+                        m.username,
+                        m.email,
+                        m.password = null
                     return m
                 })
             }
@@ -42,6 +42,13 @@ export default new GraphQLObjectType({
             type: new GraphQLList(PlayerType),
             resolve: () => {
                 return Player.find({})
+            }
+        },
+        playerById: {
+            type: PlayerType,
+            args: { _id: { type: GraphQLString } },
+            resolve: async (parent, args) => {
+                return await Player.findById(args._id)
             }
         }
     })
