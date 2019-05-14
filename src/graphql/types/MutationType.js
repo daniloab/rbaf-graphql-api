@@ -3,7 +3,8 @@ import { GraphQLObjectType } from 'graphql'
 import LoginEmail from '../mutation/user/LoginEmailMutation'
 import RegisterEmail from '../mutation/user/RegisterEmailMutation'
 import ChangePassword from '../mutation/user/ChangePasswordMutation'
-import NewPlayer from '../mutation/players/NewPlayerMutation'
+import AddPlayer from '../mutation/players/AddPlayerMutation'
+import RemovePlayer from '../mutation/players/RemovePlayerMutation'
 
 
 export default new GraphQLObjectType({
@@ -13,6 +14,7 @@ export default new GraphQLObjectType({
         LoginEmail,
         RegisterEmail,
         ChangePassword,
-        NewPlayer
+        AddPlayer,
+        RemovePlayer
     })
 })

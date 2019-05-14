@@ -3,6 +3,8 @@ import { fromGlobalId } from 'graphql-relay'
 
 import UserType from '../modules/user/UserType'
 import User from '../modules/user/UserModel'
+import PlayerType from '../modules/player/PlayerType'
+import Player from '../modules/player/PlayerModel'
 
 export default new GraphQLObjectType({
     name: 'Query',
@@ -26,6 +28,12 @@ export default new GraphQLObjectType({
             type: new GraphQLList(UserType),
             resolve: () => {
                 return User.find({})
+            }
+        },
+        players: {
+            type: new GraphQLList(PlayerType),
+            resolve: () => {
+                return Player.find({})
             }
         }
     })

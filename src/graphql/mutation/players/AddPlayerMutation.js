@@ -4,7 +4,7 @@ import { mutationWithClientMutationId } from 'graphql-relay'
 import Player from '../../modules/player/PlayerModel'
 
 export default mutationWithClientMutationId({
-    name: 'NewPlayer',
+    name: 'AddPlayer',
     inputFields: {
         name: {
             type: new GraphQLNonNull(GraphQLString),
