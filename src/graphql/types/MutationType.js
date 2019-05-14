@@ -4,6 +4,7 @@ import LoginEmail from '../mutation/user/LoginEmailMutation'
 import RegisterEmail from '../mutation/user/RegisterEmailMutation'
 import ChangePassword from '../mutation/user/ChangePasswordMutation'
 import AddPlayer from '../mutation/players/AddPlayerMutation'
+import UpdatePlayer from '../mutation/players/UpdatePlayerMutation'
 import RemovePlayer from '../mutation/players/RemovePlayerMutation'
 
 
@@ -15,6 +16,7 @@ export default new GraphQLObjectType({
         RegisterEmail,
         ChangePassword,
         AddPlayer,
-        RemovePlayer
+        UpdatePlayer,
+        RemovePlayer,
     })
 })
