@@ -26,8 +26,16 @@ export default new GraphQLObjectType({
         },
         users: {
             type: new GraphQLList(UserType),
-            resolve: () => {
-                return User.find({})
+            resolve: async () => {
+                const users = await User.find({})
+                return users.map(m => {
+                    m._id,
+                    m.name,
+                    m.username,
+                    m.email,             
+                    m.password = null
+                    return m
+                })
             }
         },
         players: {
