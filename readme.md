@@ -1,7 +1,8 @@
 
 # RBFA GraphQL API 
 
-RBFA API is an api to help teams from football in brazil to managed his dailies issues.  
+RBFA API is an api to help teams from football in brazil to managed his dailies issues. If you wanna
+see the client project, go to [here](https://github.com/daniloab/rbaf-web).
 
 ## Queries
 
@@ -104,9 +105,9 @@ mutation {
 mutation {
     AddPlayer(input: 
     {
-        name:"Sandor", 
-        lastname:"Clegane",
-        position:"Safety",
+        name:"Sandor"
+        lastname:"Clegane"
+        position:"Safety"
         document:"4477799978"
     }){
         status
