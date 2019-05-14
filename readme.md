@@ -7,43 +7,52 @@ RBFA API is an api to help teams from football in brazil to managed his dailies 
 
 ### User
 - All
-	```
-	query {
-	  users{
-	    _id
-	    name
-	    username
-	    email
-	    password
-	  }
-	}
-	```
+```
+query {
+    users{
+        _id
+        name
+        username
+        email
+        password
+    }
+}
+```
+- Auth
+```
+query {
+    me{
+        username
+        name
+        username
+    }
+}
+```
 ### Players
 - All
-	```
-	query {
-	  players{
-	    _id
-	    status
-	    name
-	    lastname
-	    position
-	    document
-	    
-	  }
+```
+query {
+    players{
+        _id
+        status
+        name
+        lastname
+        position
+        document    
     }
+}
 ```
 - By Id
-	```
+```
 query{
-	  playerById(_id: "5cdabddae1f5361d8c39aa79"){
-		_id
-		status
-		name
-		lastname
-		position
-		document
-	  }
+    playerById(_id: "_id"){
+        _id
+        status
+        name
+        lastname
+        position
+        document
+    }
 }
 ```
 ### Summary
@@ -54,102 +63,92 @@ _building, almost there ♥_
 ### User
 - Login
 ```
-   mutation {
-      LoginEmail(input: {
-        email:"jon@jon.com"
-        password:"jonpassword"
-      }){
-        token
-        error
-      }
+mutation {
+        LoginEmail(input: {
+            email:"jon@jon.com"
+            password:"jonpassword"
+            }){
+            token
+            error
+        }
     }
-   }
-```
-- Auth
-```
-	query {
-		me{
-	    username
-	    name
-	    username
-	  }
-	}
+}
 ```
 - Register
 ```
-	mutation {
-	  RegisterEmail(input: {
-	    name: "Ned"
-	    username:"nedstark"
-	    email:"ned@ned.com"
-	    password:"ned123"
-	  }){
-	    token
-	    error
-	  }
-	}
+mutation {
+    RegisterEmail(input: {
+        name: "Ned"
+        username:"nedstark"
+        email:"ned@ned.com"
+        password:"ned123"
+    }){
+        token
+        error
+    }
+}
 ```
 - Change Password
 ```
-	mutation {
-	  ChangePassword(input: {
-	    oldPassword:"oldPassword"
-	    password:"newPassword"
-	  })
-	}
+mutation {
+    ChangePassword(input: {
+        oldPassword:"oldPassword"
+        password:"newPassword"
+    })
+}
 ```
 
 ### Players
 - Add Player
 ```
-	mutation {
-	  AddPlayer(input: 
-	    {
-	      name:"Sandor", 
-	      lastname:"Clegane",
-	      position:"Safety",
-	      document:"4477799978"
-	    }){
-	    status
-	    name
-	    lastname
-	    position
-	    document    
-	    error
-	  }
-	}
+mutation {
+    AddPlayer(input: 
+    {
+        name:"Sandor", 
+        lastname:"Clegane",
+        position:"Safety",
+        document:"4477799978"
+    }){
+        status
+        name
+        lastname
+        position
+        document    
+        error
+    }
+}
 ```
 - Remove Player
 ```
-	mutation {
-	  RemovePlayer(input:{
-	    _id: "_id"
-	  }){
-	    name
-	    lastname
-	    error
-	  }
-	}
+mutation {
+    RemovePlayer(input:{
+        _id: "_id"
+    }){
+        name
+        lastname
+        error
+    }
+}
 ```
 - Update Player
 ```
-	mutation {
-	  UpdatePlayer(input: {
-	    _id: "_id"
-	    status: 99,
-	    name: "Sandor",
-	    lastname: "Clegane",
-	    position: "Middle Linebacker",
-	    document: "4477799978"
-	  }){
-	    status
-	    name
-	    lastname
-	    position
-	    document
-	    error
-	  }
-	}
+mutation {
+    UpdatePlayer(input: {
+        _id: "_id"
+        status: 99
+        name: "Sandor"
+        lastname: "Clegane"
+        position: "Middle Linebacker"
+        document: "4477799978"
+    }){
+        status
+        name
+        lastname
+        position
+        document
+        error
+    }
+}
 ```
 
 ## Getting Started 
