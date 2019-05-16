@@ -7,6 +7,7 @@ import bodyParser from 'koa-bodyparser'
 
 import { getUser } from './auth';
 import { schema } from './schema'
+import * as loaders from './loader'
 
 const app = new Koa()
 const router = new Router();
@@ -14,12 +15,21 @@ const router = new Router();
 const graphqlSettingsPerReq = async req => {
     const { user } = await getUser(req.header.authorization)
 
+    const dataloaders = Object.keys(loaders).reduce(
+        (acc, loaderKey) => ({
+            ...acc,
+            [loaderKey]: loaders[loaderKey].getLoader(),
+        }),
+        {},
+    )
+
     return {
         graphiql: process.env.NODE_ENV !== 'production',
         schema,
         context: {
             user,
             req,
+            dataloaders,
         },
         formatError: error => {
             console.log(error.message);

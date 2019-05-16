@@ -1,10 +1,17 @@
-import { GraphQLObjectType, GraphQLList, GraphQLString, GraphQLNonNull, GraphQLID } from 'graphql'
-import { fromGlobalId } from 'graphql-relay'
+import {
+    GraphQLObjectType,
+    GraphQLList,
+    GraphQLString,
+    GraphQLInt,
+} from 'graphql'
+
+import { connectionArgs } from 'graphql-relay'
 
 import UserType from '../modules/user/UserType'
 import User from '../modules/user/UserModel'
-import PlayerType from '../modules/player/PlayerType'
+import PlayerType, { PlayerConnection } from '../modules/player/PlayerType'
 import Player from '../modules/player/PlayerModel'
+import { PlayerLoader } from '../loader'
 
 export default new GraphQLObjectType({
     name: 'Query',
@@ -38,18 +45,22 @@ export default new GraphQLObjectType({
                 })
             }
         },
-        players: {
-            type: new GraphQLList(PlayerType),
-            resolve: () => {
-                return Player.find({})
-            }
-        },
-        playerById: {
+        player: {
             type: PlayerType,
             args: { _id: { type: GraphQLString } },
             resolve: async (parent, args) => {
                 return await Player.findById(args._id)
             }
-        }
+        },
+        players: {
+            type: PlayerConnection.connectionType,
+            args: {
+                ...connectionArgs,
+                status: {
+                    type: GraphQLInt,
+                },
+            },
+            resolve: (obj, args, context) => PlayerLoader.loadPlayers(context, args)            
+        },
     })
 })

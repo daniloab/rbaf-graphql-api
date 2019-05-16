@@ -1,6 +1,7 @@
 import { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLID } from 'graphql'
+import { connectionDefinitions } from 'graphql-relay'
 
-export default new GraphQLObjectType({
+const PlayerType = new GraphQLObjectType({
     name: 'player',
     description: 'player data',
     fields: () => ({
@@ -9,7 +10,7 @@ export default new GraphQLObjectType({
             resolve: player => player._id,
         },
         status: {
-            type: GraphQLInt,            
+            type: GraphQLInt,
             resolve: player => player.status,
         },
         name: {
@@ -29,4 +30,11 @@ export default new GraphQLObjectType({
             resolve: player => player.document,
         }
     })
+})
+
+export default PlayerType
+
+export const PlayerConnection = connectionDefinitions({
+    name: 'Player',    
+    nodeType: PlayerType,
 })

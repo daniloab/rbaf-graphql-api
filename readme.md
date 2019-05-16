@@ -100,23 +100,27 @@ mutation {
 ```
 
 ### Players
-- Add Player
+- Register and Update Player - If you add a new player, just pass the inputs withou _id
 ```
 mutation {
-    AddPlayer(input: 
-    {
-        name:"Sandor"
-        lastname:"Clegane"
-        position:"Safety"
-        document:"4477799978"
-    }){
-        status
-        name
-        lastname
-        position
-        document    
-        error
+  RegisterPlayerMutation(input: {
+    _id:""
+    status:1,
+    name:"Sor"
+    lastname:"Jorah"
+    position:"Cornerback"
+    document:"3456576789"
+  }){
+    newPlayer {
+      _id
+      status
+      name
+      lastname
+      position
+      document
     }
+    error
+  }
 }
 ```
 - Remove Player
@@ -131,27 +135,6 @@ mutation {
     }
 }
 ```
-- Update Player
-```
-mutation {
-    UpdatePlayer(input: {
-        _id: "_id"
-        status: 99
-        name: "Sandor"
-        lastname: "Clegane"
-        position: "Middle Linebacker"
-        document: "4477799978"
-    }){
-        status
-        name
-        lastname
-        position
-        document
-        error
-    }
-}
-```
-
 ## Getting Started 
 
 This project use graphql, graphql-relay, koa framework, jsonwebtoken and others stuffs;

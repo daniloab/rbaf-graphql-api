@@ -7,8 +7,12 @@
     "start": "nodemon src/server.js --exec babel-node"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.4.4",
+    "@entria/graphql-mongoose-loader": "^3.0.3",
     "@koa/cors": "2",
+    "babel-core": "7.0.0-bridge.0",
     "bcrypt": "^3.0.6",
+    "dataloader": "^1.4.0",
     "dotenv": "^8.0.0",
     "get-graphql-schema": "^2.1.2",
     "graphql": "^14.2.1",
@@ -23,11 +27,15 @@
     "mongoose": "5.4.4"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-eslint": "^10.0.1",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-flow": "^6.23.0",
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/node": "^7.2.2",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
     "log4js": "^4.1.1",
     "nodemon": "^1.19.0"
+  },
+  "resolutions": {
+    "babel-core": "7.0.0-bridge.0"
   }
 }
