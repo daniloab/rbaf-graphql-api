@@ -56,7 +56,7 @@ export default new GraphQLObjectType({
         players: {
             type: PlayerConnection.connectionType,
             args: {
-                connectionArgs,
+                ...connectionArgs,
                 search: {
                     type: GraphQLString,
                 },

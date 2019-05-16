@@ -35,6 +35,6 @@ const PlayerType = new GraphQLObjectType({
 export default PlayerType
 
 export const PlayerConnection = connectionDefinitions({
-    name: 'Player',
-    nodeType: GraphQlNonNull(PlayerType),
+    name: 'Player',    
+    nodeType: PlayerType,
 })
