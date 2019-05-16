@@ -5,13 +5,13 @@ import {
     GraphQLInt,
 } from 'graphql'
 
-import { connectionFromMongoCursor } from '@entria/graphql-mongoose-loader'
-import { connectionArgs, connectionFromArray } from 'graphql-relay'
+import { connectionArgs } from 'graphql-relay'
 
 import UserType from '../modules/user/UserType'
 import User from '../modules/user/UserModel'
 import PlayerType, { PlayerConnection } from '../modules/player/PlayerType'
 import Player from '../modules/player/PlayerModel'
+import { PlayerLoader } from '../loader'
 
 export default new GraphQLObjectType({
     name: 'Query',
@@ -60,11 +60,7 @@ export default new GraphQLObjectType({
                     type: GraphQLInt,
                 },
             },
-            resolve: async (context, args) => {
-                const where = args.status ? { status: args.status } : {}
-                const players = await Player.find(where)                
-                return { edges: players.map(player => { node: player }) }
-            }
+            resolve: (obj, args, context) => PlayerLoader.loadPlayers(context, args)            
         },
     })
 })
