@@ -1,4 +1,4 @@
-import { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLID, GraphQlNonNull } from 'graphql'
+import { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLID } from 'graphql'
 import { connectionDefinitions } from 'graphql-relay'
 
 const PlayerType = new GraphQLObjectType({

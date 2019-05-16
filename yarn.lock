@@ -666,6 +666,11 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
+"@entria/graphql-mongoose-loader@^3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@entria/graphql-mongoose-loader/-/graphql-mongoose-loader-3.0.3.tgz#2f1fb0b6b7551548561e3daf596b25df7955f60c"
+  integrity sha512-ZzUNi4MAMteCNKJbfwhDcVa0p/Px4EQeb4+2lDOmS6ztcRsKufx3fnGLY+HB/NAOzkjR4yuWMACJsvrAnJEoWw==
+
 "@koa/cors@2":
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/@koa/cors/-/cors-2.2.3.tgz#c32a9907acbee1e72fedfb0b9ac840d2e6f9be57"

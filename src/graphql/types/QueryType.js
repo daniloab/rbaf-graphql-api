@@ -3,11 +3,10 @@ import {
     GraphQLList,
     GraphQLString,
     GraphQLInt,
-    GraphQLNonNull,
-    GraphQLID
 } from 'graphql'
 
-import { connectionArgs } from 'graphql-relay'
+import { connectionFromMongoCursor } from '@entria/graphql-mongoose-loader'
+import { connectionArgs, connectionFromArray } from 'graphql-relay'
 
 import UserType from '../modules/user/UserType'
 import User from '../modules/user/UserModel'
@@ -57,12 +56,14 @@ export default new GraphQLObjectType({
             type: PlayerConnection.connectionType,
             args: {
                 ...connectionArgs,
-                search: {
-                    type: GraphQLString,
+                status: {
+                    type: GraphQLInt,
                 },
             },
-            resolve: (args) => {
-                return Player.find({})
+            resolve: async (context, args) => {
+                const where = args.status ? { status: args.status } : {}
+                const players = await Player.find(where)                
+                return { edges: players.map(player => { node: player }) }
             }
         },
     })
