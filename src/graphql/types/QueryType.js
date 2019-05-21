@@ -75,10 +75,10 @@ export default new GraphQLObjectType({
             resolve: (obj, args, context) => PlayerLoader.loadPlayers(context, args)            
         },
         coach: {
-            type: PlayerType,
+            type: CoachType,
             args: { _id: { type: GraphQLString } },
             resolve: async (parent, args) => {
-                return await Player.findById(args._id)
+                return await Coach.findById(args._id)
             }
         },
         coaches: {
