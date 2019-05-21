@@ -35,6 +35,7 @@ export default new GraphQLObjectType({
             type: new GraphQLList(UserType),
             resolve: async () => {
                 const users = await User.find({})
+                console.log(users)
                 return users.map(m => {
                     m._id,
                         m.name,
@@ -58,7 +59,12 @@ export default new GraphQLObjectType({
                 ...connectionArgs,
                 status: {
                     type: GraphQLInt,
+                    description: "Status players - 1: enable; 99: disabled"
                 },
+                new: {
+                    type: GraphQLString,
+                    description: "Date - the newest players added until 10 days before from this date"
+                }
             },
             resolve: (obj, args, context) => PlayerLoader.loadPlayers(context, args)            
         },
