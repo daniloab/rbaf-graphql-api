@@ -9,9 +9,15 @@ import { connectionArgs } from 'graphql-relay'
 
 import UserType from '../modules/user/UserType'
 import User from '../modules/user/UserModel'
+
 import PlayerType, { PlayerConnection } from '../modules/player/PlayerType'
 import Player from '../modules/player/PlayerModel'
 import { PlayerLoader } from '../loader'
+
+
+import CoachType, { CoachConnection } from '../modules/coach/CoachType'
+import Coach from '../modules/coach/CoachModel'
+import { CoachLoader } from '../loader'
 
 export default new GraphQLObjectType({
     name: 'Query',
@@ -67,6 +73,25 @@ export default new GraphQLObjectType({
                 }
             },
             resolve: (obj, args, context) => PlayerLoader.loadPlayers(context, args)            
+        },
+        coach: {
+            type: PlayerType,
+            args: { _id: { type: GraphQLString } },
+            resolve: async (parent, args) => {
+                return await Player.findById(args._id)
+            }
+        },
+        coaches: {
+            type: CoachConnection.connectionType,
+            description: 'get all coaches',
+            args: {
+                ...connectionArgs,
+                squad: {
+                    type: GraphQLInt,
+                    description: "Coaches per squad - 1: offense; 2: defense; 3: special teams"
+                }
+            },
+            resolve: (obj, args, context) => CoachLoader.loadCoaches(context, args)            
         },
     })
 })

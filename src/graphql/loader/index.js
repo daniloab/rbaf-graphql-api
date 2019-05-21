@@ -1,3 +1,7 @@
 import * as PlayerLoader from '../modules/player/PlayerLoader'
+import * as CoachLoader from '../modules/coach/CoachLoader'
 
-export { PlayerLoader }
+export {
+    CoachLoader,
+    PlayerLoader
+}
