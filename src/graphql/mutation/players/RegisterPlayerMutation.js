@@ -5,7 +5,7 @@ import Player from '../../modules/player/PlayerModel'
 import PlayerType from '../../modules/player/PlayerType';
 
 export default mutationWithClientMutationId({
-    name: 'UpdatePlayer',
+    name: 'RegisterPlayer',
     inputFields: {
         _id: {
             type: GraphQLString,
@@ -19,7 +19,7 @@ export default mutationWithClientMutationId({
         lastname: {
             type: GraphQLString,
         },
-        position: {
+        position: { 
             type: GraphQLString,
         },
         document: {
@@ -45,6 +45,8 @@ export default mutationWithClientMutationId({
                     document,
                 })
             }
+
+            console.log(player)            
 
             const newPlayer = await player.save()
 
