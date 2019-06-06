@@ -1,6 +1,6 @@
 import { GraphQLEnumType } from 'graphql'
 
-export default new GraphQLEnumType({
+const coachStaffEnumType = new GraphQLEnumType({
     name: 'CoachStaffEnumType',
     values: {
         OFFENSE: {
@@ -14,3 +14,5 @@ export default new GraphQLEnumType({
         }
     }
 })
+
+export default coachStaffEnumType

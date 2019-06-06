@@ -1,13 +1,11 @@
 import mongoose from 'mongoose';
 
-import CoachStaffEnumType from './CoachStaffEnumType'
-
 const { ObjectId } = mongoose.Schema.Types;
 const Schema = mongoose.Schema;
 
 const coachSchema = new Schema({
     staff: {
-        type: CoachStaffEnumType,
+        type: Number,
         description: '0: offense; 1: defense 2: special team',
         required: 'staff is required',
     },

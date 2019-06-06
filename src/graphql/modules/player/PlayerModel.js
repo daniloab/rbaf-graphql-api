@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 
+const { ObjectId } = mongoose.Schema.Types;
 const Schema = mongoose.Schema;
 
 const playerSchema = new Schema({

@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt'
 
+const { ObjectId } = mongoose.Schema.Types;
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({

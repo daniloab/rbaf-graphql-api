@@ -2,7 +2,7 @@ import { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLID } from 'graphql
 
 const TeamType = new GraphQLObjectType({
     name: 'team',
-    description: 'tean data',
+    description: 'team data',
     fields: () => ({
         _id: {
             type: GraphQLID,

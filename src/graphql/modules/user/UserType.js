@@ -1,6 +1,9 @@
 import { GraphQLObjectType, GraphQLString, GraphQLBoolean, GraphQLID } from 'graphql'
 import { globalIdField } from 'graphql-relay'
 
+import TeamType from '../team/TeamType'
+import Team from '../team/TeamModel'
+
 export default new GraphQLObjectType({
     name: 'User',
     description: 'User data',
@@ -25,5 +28,13 @@ export default new GraphQLObjectType({
             type: GraphQLString,
             resolve: user => user.password,
         },
+        team: {
+            type: TeamType,            
+            resolve: async user => {
+                return await Team.findOne({
+                    _id: user.team
+                })
+            },
+        }
     })
 })
