@@ -19,6 +19,10 @@ const UserSchema = new Schema({
     password: {
         type: String,
         required: 'name is required',
+    },
+    team: {
+        type: ObjectId,
+        ref: 'Team'
     }
 }, { timestamps: true });
 

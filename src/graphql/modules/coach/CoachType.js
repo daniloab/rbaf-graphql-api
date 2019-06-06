@@ -1,5 +1,8 @@
-import { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLID } from 'graphql'
+import { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLID, GraphQLEnumType } from 'graphql'
 import { connectionDefinitions } from 'graphql-relay'
+
+import TeamType from '../team/TeamType'
+import Team from '../team/TeamModel'
 
 const CoachType = new GraphQLObjectType({
     name: 'coach',
@@ -9,9 +12,9 @@ const CoachType = new GraphQLObjectType({
             type: GraphQLID,
             resolve: coach => coach._id,
         },
-        squad: {
-            type: GraphQLInt,
-            resolve: coach => coach.squad,
+        staff: {
+            type: GraphQLEnumType,
+            resolve: coach => coach.staff,
         },
         name: {
             type: GraphQLString,
@@ -25,9 +28,17 @@ const CoachType = new GraphQLObjectType({
             type: GraphQLString,
             resolve: coach => coach.job,
         },
-        document: {
+        taxId: {
             type: GraphQLString,
-            resolve: coach => coach.document,
+            resolve: coach => coach.taxId,
+        },
+        team: {
+            type: TeamType,            
+            resolve: async coach => {
+                return await Team.findOne({
+                    _id: coach.team
+                })
+            },
         }
     })
 })

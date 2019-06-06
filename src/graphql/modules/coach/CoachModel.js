@@ -1,12 +1,15 @@
 import mongoose from 'mongoose';
 
+import CoachStaffEnumType from './CoachStaffEnumType'
+
+const { ObjectId } = mongoose.Schema.Types;
 const Schema = mongoose.Schema;
 
-const staffSchema = new Schema({
-    squad: {
-        type: Number,
-        description: '1: offense; 2: defense',
-        required: 'lastname is required',
+const coachSchema = new Schema({
+    staff: {
+        type: CoachStaffEnumType,
+        description: '0: offense; 1: defense 2: special team',
+        required: 'staff is required',
     },
     name: {
         type: String,
@@ -20,10 +23,14 @@ const staffSchema = new Schema({
         type: String,
         required: 'job is required',
     },
-    document: {
+    taxId: {
         type: String,
-        required: 'document is required'
+        required: 'tax number is required'
+    },
+    team: {
+        type: ObjectId,
+        ref: 'Team'
     }
 }, { timestamps: true });
 
-export default mongoose.model('Staff', staffSchema)
+export default mongoose.model('Coach', coachSchema)

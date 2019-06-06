@@ -17,9 +17,13 @@ const playerSchema = new Schema({
     position: {
         type: String,
     },
-    document: {
+    taxId: {
         type: String,
         required: 'document is required'
+    },
+    team: {
+        type: ObjectId,
+        ref: 'Team'
     }
 }, { timestamps: true });
 
