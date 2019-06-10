@@ -14,7 +14,7 @@ export default mutationWithClientMutationId({
             type: GraphQLInt
         },
         name: {
-            type: GraphQLString,
+            type: new GraphQLNonNull(GraphQLString),
         },
         lastname: {
             type: GraphQLString,
@@ -22,27 +22,31 @@ export default mutationWithClientMutationId({
         position: { 
             type: GraphQLString,
         },
-        document: {
-            type: GraphQLString,
+        taxId: {
+            type: new GraphQLNonNull(GraphQLString),
+        },
+        team: {
+          type: new GraphQLNonNull(GraphQLString),
         },
     },
-    mutateAndGetPayload: async ({ _id, status, name, lastname, position, document }) => {
+    mutateAndGetPayload: async ({ _id, status, name, lastname, position, taxId, team }) => {
         try {
-            let player = await Player.findOne({ document })
+            let player = await Player.findOne({ taxId })
             
             if (player) {
                 player.status = status
                 player.name = name
                 player.lastname = lastname
                 player.position = position
-                player.document = document
+                player.taxId = taxId
             } else {
                 player = new Player({
                     status: 1,
                     name,
                     lastname,
                     position,
-                    document,
+                    taxId,
+                    team
                 })
             }
 

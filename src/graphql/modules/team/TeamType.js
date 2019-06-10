@@ -1,9 +1,11 @@
 import { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLID } from 'graphql'
+import { globalIdField } from 'graphql-relay'
 
 const TeamType = new GraphQLObjectType({
     name: 'team',
     description: 'team data',
     fields: () => ({
+        id: globalIdField('Team'),
         _id: {
             type: GraphQLString,
             resolve: team => team._id,

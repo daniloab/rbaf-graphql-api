@@ -20,7 +20,7 @@ const playerSchema = new Schema({
     },
     taxId: {
         type: String,
-        required: 'document is required'
+        required: 'taxId is required'
     },
     team: {
         type: ObjectId,
