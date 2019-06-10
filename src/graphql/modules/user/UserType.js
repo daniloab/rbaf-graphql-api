@@ -1,5 +1,4 @@
 import { GraphQLObjectType, GraphQLString, GraphQLBoolean, GraphQLID } from 'graphql'
-import { globalIdField } from 'graphql-relay'
 
 import TeamType from '../team/TeamType'
 import Team from '../team/TeamModel'
@@ -9,7 +8,7 @@ export default new GraphQLObjectType({
     description: 'User data',
     fields: () => ({
         _id: {
-            type: GraphQLID,
+            type: GraphQLString,
             resolve: user => user._id,
         },
         name: {

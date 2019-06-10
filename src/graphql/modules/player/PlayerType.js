@@ -9,7 +9,7 @@ const PlayerType = new GraphQLObjectType({
     description: 'player data',
     fields: () => ({
         _id: {
-            type: GraphQLID,
+            type: GraphQLString,
             resolve: player => player._id,
         },
         status: {

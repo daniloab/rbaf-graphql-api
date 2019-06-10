@@ -5,8 +5,7 @@ const Schema = mongoose.Schema;
 
 const coachSchema = new Schema({
     staff: {
-        type: Number,
-        description: '0: offense; 1: defense 2: special team',
+        type: String,
         required: 'staff is required',
     },
     name: {
@@ -14,15 +13,15 @@ const coachSchema = new Schema({
         required: 'name is required',
     },
     lastname: {
-        type: String,
+        type: String,        
         required: 'lastname is required',
     },
     job: {
-        type: String,
+        type: String,        
         required: 'job is required',
     },
     taxId: {
-        type: String,
+        type: String,        
         required: 'tax number is required'
     },
     team: {

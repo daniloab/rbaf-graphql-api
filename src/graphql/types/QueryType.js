@@ -41,7 +41,7 @@ export default new GraphQLObjectType({
             type: new GraphQLList(UserType),
             resolve: async () => {
                 const users = await User.find({})
-                console.log(users)
+                
                 return users.map(m => {
                     m._id,
                         m.name,

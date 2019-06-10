@@ -9,11 +9,11 @@ const CoachType = new GraphQLObjectType({
     description: 'coach data',
     fields: () => ({
         _id: {
-            type: GraphQLID,
+            type: GraphQLString,
             resolve: coach => coach._id,
         },
         staff: {
-            type: GraphQLEnumType,
+            type: GraphQLString,
             resolve: coach => coach.staff,
         },
         name: {

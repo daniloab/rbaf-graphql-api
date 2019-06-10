@@ -5,7 +5,7 @@ const TeamType = new GraphQLObjectType({
     description: 'team data',
     fields: () => ({
         _id: {
-            type: GraphQLID,
+            type: GraphQLString,
             resolve: team => team._id,
         },
         status: {
@@ -17,7 +17,7 @@ const TeamType = new GraphQLObjectType({
             resolve: team => team.name,
         },
         taxId: {
-            type: String,
+            type: GraphQLString,
             required: 'tax number is required'
         },
     })
