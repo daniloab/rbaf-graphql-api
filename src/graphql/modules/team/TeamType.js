@@ -16,6 +16,10 @@ const TeamType = new GraphQLObjectType({
             type: GraphQLString,
             resolve: team => team.name,
         },
+        tradeName: {
+            type: GraphQLString,
+            resolve: team => team.tradeName,
+        },
         taxId: {
             type: GraphQLString,
             required: 'tax number is required'

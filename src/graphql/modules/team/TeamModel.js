@@ -10,6 +10,10 @@ const teamSchema = new Schema({
         type: String,
         required: 'name is required',
     },
+    tradeName: {
+        type: String,
+        required: 'trade name is required',
+    },
     taxId: {
         type: String,
         required: 'tax number is required'

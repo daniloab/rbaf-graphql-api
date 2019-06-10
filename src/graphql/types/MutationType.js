@@ -6,6 +6,8 @@ import ChangePassword from '../mutation/user/ChangePasswordMutation'
 import RegisterPlayer from '../mutation/players/RegisterPlayerMutation'
 import RemovePlayer from '../mutation/players/RemovePlayerMutation'
 
+import RegisterTeam from '../mutation/team/RegisterTeamMutation'
+
 export default new GraphQLObjectType({
     name: 'Mutation',
     description: 'Root of ... mutations',
@@ -13,7 +15,8 @@ export default new GraphQLObjectType({
         LoginEmail,
         RegisterEmail,
         ChangePassword,
-        RegisterPlayer  ,
+        RegisterPlayer,
         RemovePlayer,
+        RegisterTeam
     })
 })

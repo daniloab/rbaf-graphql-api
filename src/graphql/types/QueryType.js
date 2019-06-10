@@ -86,7 +86,7 @@ export default new GraphQLObjectType({
             description: 'get all coaches',
             args: {
                 ...connectionArgs,
-                squad: {
+                staff: {
                     type: GraphQLInt,
                     description: "Coaches per squad - 1: offense; 2: defense; 3: special teams"
                 }
