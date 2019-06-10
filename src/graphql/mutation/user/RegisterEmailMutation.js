@@ -19,14 +19,24 @@ export default mutationWithClientMutationId({
     password: {
       type: new GraphQLNonNull(GraphQLString),
     },
+    team: {
+      type: new GraphQLNonNull(GraphQLString),
+    },
   },
-  mutateAndGetPayload: async ({ name, username, email, password }) => {
+  mutateAndGetPayload: async ({ name, username, email, password, team }) => {
     let user = await User.findOne({ email: email.toLowerCase() })
 
     if (user) {
       return {
         token: null,
         error: 'EMAIL_ALREADY_IN_USE',
+      }
+    }
+
+    if(!team){
+      return {
+        token: null,
+        error: 'YOU_NEED_A_TEAM',
       }
     }
 

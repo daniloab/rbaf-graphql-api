@@ -25,23 +25,23 @@ export default mutationWithClientMutationId({
     },
     mutateAndGetPayload: async ({ _id, status, name, tradeName, taxId }) => {
         try {
-            let team = await Team.findOne({ taxId })
+            let team = await Team.findOne({ taxId });
             
             if (team) {
-                team.status = status
-                team.name = name
-                team.tradeName = tradeName
-                team.taxId = taxId
+                team.status = status;
+                team.name = name;
+                team.tradeName = tradeName;
+                team.taxId = taxId;
             } else {
                 team = new Team({
                     status: 1,
                     name,
                     tradeName,
                     taxId,
-                })
+                });
             }         
 
-            const newTeam = await team.save()
+            const newTeam = await team.save();
 
             return {
                 newTeam,
