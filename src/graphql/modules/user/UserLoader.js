@@ -30,8 +30,7 @@ export const clearAndPrimeCache = (context, id, data) => clearCache(context, id)
 
 export const loadUsers = async (context, args) => {
     try {
-        const where = args.status ? { status: args.status } : {}
-        const users = UserModel.find(where)
+        const users = UserModel.find({ team: context.user.team })
 
         return connectionFromMongoCursor({
             cursor: users,

@@ -12,12 +12,15 @@ import User from '../modules/user/UserModel'
 
 import PlayerType, { PlayerConnection } from '../modules/player/PlayerType'
 import Player from '../modules/player/PlayerModel'
-import { PlayerLoader } from '../loader'
-
 
 import CoachType, { CoachConnection } from '../modules/coach/CoachType'
 import Coach from '../modules/coach/CoachModel'
-import { CoachLoader } from '../loader'
+
+import {
+    CoachLoader,
+    PlayerLoader,
+    UserLoader
+} from '../loader'
 
 export default new GraphQLObjectType({
     name: 'Query',
@@ -39,18 +42,19 @@ export default new GraphQLObjectType({
         },
         users: {
             type: new GraphQLList(UserType),
-            resolve: async () => {
-                const users = await User.find({})
-                
-                return users.map(m => {
-                    m._id,
-                        m.name,
-                        m.username,
-                        m.email,
-                        m.password = null
-                    return m
-                })
-            }
+            resolve: (obj, args, context) => UserLoader.loadUsers(context, args)
+            // resolve: async () => {
+            //     const users = await User.find({})
+
+            //     return users.map(m => {
+            //         m._id,
+            //             m.name,
+            //             m.username,
+            //             m.email,
+            //             m.password = null
+            //         return m
+            //     })
+            // }
         },
         player: {
             type: PlayerType,
@@ -72,7 +76,7 @@ export default new GraphQLObjectType({
                     description: "Date - the newest players added until 10 days before from this date"
                 }
             },
-            resolve: (obj, args, context) => PlayerLoader.loadPlayers(context, args)            
+            resolve: (obj, args, context) => PlayerLoader.loadPlayers(context, args)
         },
         coach: {
             type: CoachType,
@@ -91,7 +95,7 @@ export default new GraphQLObjectType({
                     description: "Coaches per squad - 1: offense; 2: defense; 3: special teams"
                 }
             },
-            resolve: (obj, args, context) => CoachLoader.loadCoaches(context, args)            
+            resolve: (obj, args, context) => CoachLoader.loadCoaches(context, args)
         },
     })
 })
