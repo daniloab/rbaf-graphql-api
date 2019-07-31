@@ -27,52 +27,52 @@ http://localhost:9001/graphql
 
 ### User
 - All
-```
+```gql
 query {
-    users{
-        _id
-        name
-        username
-        email
-        password
-    }
+  users {
+    _id
+    name
+    username
+    email
+    password
+  }
 }
 ```
 - Auth
-```
+```gql
 query {
-    me{
-        username
-        name
-        username
-    }
+  me {
+    username
+    name
+    username
+  }
 }
 ```
 ### Players
 - All
-```
+```gql
 query {
-    players{
-        _id
-        status
-        name
-        lastname
-        position
-        document    
-    }
+  players {
+    _id
+    status
+    name
+    lastname
+    position
+    document    
+  }
 }
 ```
 - By Id
-```
-query{
-    playerById(_id: "_id"){
-        _id
-        status
-        name
-        lastname
-        position
-        document
-    }
+```gql
+query {
+  playerById(_id: "_id") {
+    _id
+    status
+    name
+    lastname
+    position
+    document
+  }
 }
 ```
 ### Summary
@@ -82,45 +82,45 @@ _building, almost there ♥_
 
 ### User
 - Login
-```
+```gql
 mutation {
-        LoginEmail(input: {
-            email:"jon@jon.com"
-            password:"jonpassword"
-            }){
-            token
-            error
-        }
-    }
-}
-```
-- Register
-```
-mutation {
-    RegisterEmail(input: {
-        name: "Ned"
-        username:"nedstark"
-        email:"ned@ned.com"
-        password:"ned123"
-    }){
+    LoginEmail(input: {
+      email:"jon@jon.com"
+      password:"jonpassword"
+      }) {
         token
         error
     }
+  }
+}
+```
+- Register
+```gql
+mutation {
+  RegisterEmail(input: {
+    name: "Ned"
+    username:"nedstark"
+    email:"ned@ned.com"
+    password:"ned123"
+  }) {
+    token
+    error
+  }
 }
 ```
 - Change Password
-```
+```gql
 mutation {
-    ChangePassword(input: {
-        oldPassword:"oldPassword"
-        password:"newPassword"
-    })
+  ChangePassword(input: {
+    oldPassword:"oldPassword"
+    password:"newPassword"
+  })
 }
 ```
 
 ### Players
 - Register and Update Player - If you add a new player, just pass the inputs withou _id
-```
+```gql
 mutation {
   RegisterPlayerMutation(input: {
     _id:""
@@ -129,7 +129,7 @@ mutation {
     lastname:"Jorah"
     position:"Cornerback"
     document:"3456576789"
-  }){
+  }) {
     newPlayer {
       _id
       status
@@ -143,14 +143,14 @@ mutation {
 }
 ```
 - Remove Player
-```
+```gql
 mutation {
-    RemovePlayer(input:{
-        _id: "_id"
-    }){
-        name
-        lastname
-        error
-    }
+  RemovePlayer(input:{
+    _id: "_id"
+  }) {
+    name
+    lastname
+    error
+  }
 }
 ```
