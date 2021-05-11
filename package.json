@@ -11,7 +11,7 @@
     "@entria/graphql-mongoose-loader": "^3.0.3",
     "@koa/cors": "2",
     "babel-core": "7.0.0-bridge.0",
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "dataloader": "^1.4.0",
     "dotenv": "^8.0.0",
     "get-graphql-schema": "^2.1.2",
