@@ -8,7 +8,6 @@ import {
 import { connectionArgs } from "graphql-relay";
 
 import UserType from "../modules/user/UserType";
-import User from "../modules/user/UserModel";
 
 import PlayerType, { PlayerConnection } from "../modules/player/PlayerType";
 import Player from "../modules/player/PlayerModel";
@@ -24,16 +23,8 @@ export default new GraphQLObjectType({
   fields: () => ({
     me: {
       type: UserType,
-      resolve: (root, args, context) => {
-        if (context.user) {
-          const user = User.findById(context.user._id);
-          user.password = null;
-
-          return user;
-        } else {
-          return null;
-        }
-      },
+      resolve: (root, args, context) =>
+        UserLoader.load(context, context.user?._id),
     },
     users: {
       type: new GraphQLList(UserType),
