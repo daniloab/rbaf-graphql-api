@@ -5,7 +5,8 @@
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.14.6",
-    "@entria/graphql-mongoose-loader": "^3.0.3",
+    "@entria/graphql-mongo-helpers": "^1.0.1",
+    "@entria/graphql-mongoose-loader": "^4.3.2",
     "@koa/cors": "2",
     "babel-jest": "^27.0.6",
     "bcrypt": "^5.0.0",
