@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 import { createServer } from "http";
 import log4js from "./shared/logger";
 
-import app from "./graphql/app";
+import app from "./server/app";
 import initDB from "./database";
 import { environment, serverConf } from "./shared/index";
 
