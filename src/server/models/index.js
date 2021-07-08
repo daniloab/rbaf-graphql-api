@@ -1,9 +1,3 @@
-import User from '../modules/user/UserModel'
-import Coach from '../modules/coach/CoachModel'
-import Player from '../modules/player/PlayerModel'
+import User from "../modules/user/UserModel";
 
-export {
-    Player,
-    Coach,
-    User
-}
+export { User };

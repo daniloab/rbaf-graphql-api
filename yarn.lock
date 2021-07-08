@@ -1100,10 +1100,18 @@
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.3.tgz#90420f9f9c6d3987f176a19a7d8e764271a2f55d"
   integrity sha512-Fxt+AfXgjMoin2maPIYzFZnQjAXjAL0PHscM5pRTtatFqB+vZxAM9tLp2Optnuw3QOQC40jTNeGYFOMvyf7v9g==
 
-"@entria/graphql-mongoose-loader@^3.0.3":
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/@entria/graphql-mongoose-loader/-/graphql-mongoose-loader-3.0.3.tgz#2f1fb0b6b7551548561e3daf596b25df7955f60c"
-  integrity sha512-ZzUNi4MAMteCNKJbfwhDcVa0p/Px4EQeb4+2lDOmS6ztcRsKufx3fnGLY+HB/NAOzkjR4yuWMACJsvrAnJEoWw==
+"@entria/graphql-mongo-helpers@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@entria/graphql-mongo-helpers/-/graphql-mongo-helpers-1.0.1.tgz#dbc6506f08e7dac629451fd42f6f260ee36cc178"
+  integrity sha512-6VG0Ht5qiG7Q2/A/exXnQ6QY5Tr5aWVAwq9Zd+98ou2RXbvggNHmKlFa3WVCrq/x0g1JV4X8vS/kAHpbwxs6dg==
+  dependencies:
+    "@entria/graphql-mongoose-loader" "^4.3.2"
+    "@types/graphql" "14.5.0"
+
+"@entria/graphql-mongoose-loader@^4.3.2":
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/@entria/graphql-mongoose-loader/-/graphql-mongoose-loader-4.3.2.tgz#1ccaf9cf8d6c80a974ff3154c45de5b12169b11c"
+  integrity sha512-F10Cs8iMI7XYP1C2fliaY7GiHY1wkrmufEeJHadiwvYg44fW53RnuprUu2blKTP85ZQrk0vb6Tsg6tM5OCd3fg==
 
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
@@ -1490,6 +1498,13 @@
   integrity sha512-anKkLmZZ+xm4p8JWBf4hElkM4XR+EZeA2M9BAkkTldmcyDY4mbdIJnRghDJH3Ov5ooY7/UAoENtmdMSkaAd7Cw==
   dependencies:
     "@types/node" "*"
+
+"@types/graphql@14.5.0":
+  version "14.5.0"
+  resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-14.5.0.tgz#a545fb3bc8013a3547cf2f07f5e13a33642b75d6"
+  integrity sha512-MOkzsEp1Jk5bXuAsHsUi6BVv0zCO+7/2PTiZMXWDSsMXvNU6w/PLMQT2vHn8hy2i0JqojPz1Sz6rsFjHtsU0lA==
+  dependencies:
+    graphql "*"
 
 "@types/http-proxy-middleware@*":
   version "1.0.0"
@@ -3950,6 +3965,11 @@ graphql-relay@^0.6.0:
   integrity sha512-OVDi6C9/qOT542Q3KxZdXja3NrDvqzbihn1B44PH8P/c5s0Q90RyQwT6guhGqXqbYEH6zbeLJWjQqiYvcg2vVw==
   dependencies:
     prettier "^1.16.0"
+
+graphql@*:
+  version "15.5.1"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-15.5.1.tgz#f2f84415d8985e7b84731e7f3536f8bb9d383aad"
+  integrity sha512-FeTRX67T3LoE3LWAxxOlW2K3Bz+rMYAC18rRguK4wgXaTZMiJwSUwDmPFo3UadAKbzirKIg5Qy+sNJXbpPRnQw==
 
 graphql@^14.0.2:
   version "14.3.0"
