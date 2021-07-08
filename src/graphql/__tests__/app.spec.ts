@@ -16,7 +16,9 @@ beforeEach(clearDbAndRestartCounters);
 afterAll(disconnectMongoose);
 
 it("should return 200 and return logged user", async () => {
-  const user = await createUser();
+  const user = await createUser({
+    name: "Danilo",
+  });
 
   const token = generateToken(user);
 
@@ -45,6 +47,9 @@ it("should return 200 and return logged user", async () => {
     })
     .send(JSON.stringify(payload));
 
-  expect(response.body).toMatchSnapshot();
   expect(response.status).toBe(200);
+
+  expect(response.body.data.me.name).toBe(user.name);
+
+  expect(response.body).toMatchSnapshot();
 });

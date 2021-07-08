@@ -7,7 +7,9 @@ export const createUser = (args: DeepPartial<IUser> = {}) => {
 
   return new User({
     name: `user#${i}`,
+    username: `username${i}`,
     email: `user${i}@example.com`,
+    password: `password#${i}`,
     ...args,
   }).save();
 };
