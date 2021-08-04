@@ -3,13 +3,14 @@ import {
   GraphQLString,
   GraphQLBoolean,
   GraphQLID,
+  GraphQLList,
 } from "graphql";
 import { globalIdField } from "graphql-relay";
 
 import TeamType from "../team/TeamType";
 import Team from "../team/TeamModel";
 
-export default new GraphQLObjectType({
+const UserType = new GraphQLObjectType({
   name: "User",
   description: "User data",
   fields: () => ({
@@ -34,5 +35,12 @@ export default new GraphQLObjectType({
         });
       },
     },
+    kind: {
+      type: GraphQLList(GraphQLString),
+      description: "Kind that this user belongs: coach or player",
+      resolve: (user) => user?.kind || [],
+    },
   }),
 });
+
+export default UserType;
