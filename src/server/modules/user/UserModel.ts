@@ -26,6 +26,11 @@ const UserSchema = new Schema(
       type: ObjectId,
       ref: "Team",
     },
+    kind: {
+      type: [String],
+      default: [],
+      required: false,
+    },
   },
   { timestamps: true }
 );
@@ -36,6 +41,7 @@ export interface IUser extends Document {
   password: string;
   // @todo relate with ITeam interface
   team: string;
+  kind: string[];
   authenticate: (plainTextPassword: string) => boolean;
   encryptPassword: (password: string | undefined) => string;
   createdAt: Date;
