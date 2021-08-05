@@ -34,18 +34,17 @@ const getTypeRegister = () => {
     const { load } = typesLoaders[type] || { load: null };
 
     return (load && load(context, id)) || null;
-  }
+  };
+
+  const typeResolver = (obj) => {
+    const { type } = typesLoaders[obj.constructor.name] || { type: null };
+
+    return type;
+  };
 
   const { nodeField, nodesField, nodeInterface } = nodeDefinitions(
-    ,
-    (obj) => {
-      console.log("obj", obj);
-      console.log("obj.constructor.name", obj.constructor.name);
-      const { type } = typesLoaders[obj.constructor.name] || { type: null };
-      console.log("type", type);
-
-      return type;
-    }
+    idFetcher,
+    typeResolver
   );
 
   return {
