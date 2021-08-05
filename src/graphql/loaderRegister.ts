@@ -1,12 +1,6 @@
-import { DataLoaderKey } from "@world/graphql";
-import DataLoader from "dataloader";
-
 export interface DataLoaders {
-  PostLoader: ReturnType<typeof import("../post/PostLoader").getLoader>;
-  UserLoader: ReturnType<typeof import("../user/UserLoader").getLoader>;
-  LikeLoader: ReturnType<typeof import("../like/LikeLoader").getLoader>;
-  CommentLoader: ReturnType<
-    typeof import("../comment/CommentLoader").getLoader
+  UserLoader: ReturnType<
+    typeof import("../server/modules/user/UserLoader").getLoader
   >;
 }
 
