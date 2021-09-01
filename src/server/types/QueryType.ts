@@ -1,8 +1,9 @@
-import { GraphQLObjectType, GraphQLList, GraphQLString } from "graphql";
+import { GraphQLObjectType, GraphQLNonNull, GraphQLString } from "graphql";
 
-import UserType from "../modules/user/UserType";
+import UserType, { UserConnection } from "../modules/user/UserType";
 import * as UserLoader from "../modules/user/UserLoader";
 import { nodeField, nodesField } from "../modules/node/typeRegister";
+import { connectionArgs } from "../../graphql/connectionDefinitions";
 
 // import { version } from "../../../package.json";
 
@@ -21,9 +22,13 @@ export default new GraphQLObjectType({
       resolve: (root, args, context) =>
         UserLoader.load(context, context.user?._id),
     },
-    // users: {
-    //   type: GraphQLList(UserType),
-    //   resolve: (obj, args, context) => UserLoader.loadAll(context, args),
-    // },
+    users: {
+      type: GraphQLNonNull(UserConnection.connectionType),
+      args: {
+        ...connectionArgs,
+      },
+      resolve: async (_, args, context) =>
+        await UserLoader.loadAll(context, args),
+    },
   }),
 });

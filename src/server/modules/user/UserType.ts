@@ -6,6 +6,7 @@ import Team from "../team/TeamModel";
 import { registerTypeLoader, nodeInterface } from "../node/typeRegister";
 
 import { load } from "./UserLoader";
+import { connectionDefinitions } from "../../../graphql/connectionDefinitions";
 
 const UserType = new GraphQLObjectType({
   name: "User",
@@ -44,3 +45,8 @@ const UserType = new GraphQLObjectType({
 registerTypeLoader(UserType, load);
 
 export default UserType;
+
+export const UserConnection = connectionDefinitions({
+  name: "User",
+  nodeType: UserType,
+});
