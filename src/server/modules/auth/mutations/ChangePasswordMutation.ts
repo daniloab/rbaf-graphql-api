@@ -1,39 +1,39 @@
-import { GraphQLString, GraphQLNonNull } from 'graphql'
-import { mutationWithClientMutationId } from 'graphql-relay'
+import { GraphQLString, GraphQLNonNull } from "graphql";
+import { mutationWithClientMutationId } from "graphql-relay";
 
-import { User } from '../../models/index'
+import { User } from "../../../models";
 // import { UserLoader } from '../loader'
 
 export default mutationWithClientMutationId({
-  name: 'ChangePassword',
+  name: "ChangePassword",
   inputFields: {
     oldPassword: {
       type: new GraphQLNonNull(GraphQLString),
     },
     password: {
       type: new GraphQLNonNull(GraphQLString),
-      description: 'user new password',
+      description: "user new password",
     },
   },
   mutateAndGetPayload: async ({ oldPassword, password }, { user }) => {
     if (!user) {
-      throw new Error('invalid user')
+      throw new Error("invalid user");
     }
 
-    const correctPassword = user.authenticate(oldPassword)
+    const correctPassword = user.authenticate(oldPassword);
 
     if (!correctPassword) {
       return {
-        error: 'INVALID_PASSWORD',
-      }
+        error: "INVALID_PASSWORD",
+      };
     }
 
-    user.password = password
-    await user.save()
+    user.password = password;
+    await user.save();
 
     return {
       error: null,
-    }
+    };
   },
   outputFields: {
     error: {
@@ -45,4 +45,4 @@ export default mutationWithClientMutationId({
     //   resolve: (obj, args, context) => UserLoader.load(context, context.user.id),
     // },
   },
-})
+});

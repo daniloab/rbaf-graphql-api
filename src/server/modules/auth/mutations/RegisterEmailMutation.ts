@@ -1,11 +1,11 @@
-import { GraphQLString, GraphQLNonNull } from 'graphql'
-import { mutationWithClientMutationId } from 'graphql-relay'
+import { GraphQLString, GraphQLNonNull } from "graphql";
+import { mutationWithClientMutationId } from "graphql-relay";
 
-import User from '../../modules/user/UserModel'
-import { generateToken } from '../../auth'
+import User from "../../user/UserModel";
+import { generateToken } from "../../../auth";
 
 export default mutationWithClientMutationId({
-  name: 'RegisterEmail',
+  name: "RegisterEmail",
   inputFields: {
     name: {
       type: new GraphQLNonNull(GraphQLString),
@@ -24,20 +24,20 @@ export default mutationWithClientMutationId({
     },
   },
   mutateAndGetPayload: async ({ name, username, email, password, team }) => {
-    let user = await User.findOne({ email: email.toLowerCase() })
+    let user = await User.findOne({ email: email.toLowerCase() });
 
     if (user) {
       return {
         token: null,
-        error: 'EMAIL_ALREADY_IN_USE',
-      }
+        error: "EMAIL_ALREADY_IN_USE",
+      };
     }
 
-    if(!team){
+    if (!team) {
       return {
         token: null,
-        error: 'YOU_NEED_A_TEAM',
-      }
+        error: "YOU_NEED_A_TEAM",
+      };
     }
 
     user = new User({
@@ -45,13 +45,13 @@ export default mutationWithClientMutationId({
       username,
       email,
       password,
-    })
-    await user.save()
+    });
+    await user.save();
 
     return {
       token: generateToken(user),
       error: null,
-    }
+    };
   },
   outputFields: {
     token: {
@@ -63,4 +63,4 @@ export default mutationWithClientMutationId({
       resolve: ({ error }) => error,
     },
   },
-})
+});
