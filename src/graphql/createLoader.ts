@@ -87,6 +87,7 @@ export const createLoader = <
 
       return filteredData ? (new Wrapper(filteredData) as Value) : null;
     } catch (err) {
+      console.log("err", err);
       return null;
     }
   };

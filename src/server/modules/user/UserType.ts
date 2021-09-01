@@ -1,14 +1,11 @@
-import {
-  GraphQLObjectType,
-  GraphQLString,
-  GraphQLBoolean,
-  GraphQLID,
-  GraphQLList,
-} from "graphql";
+import { GraphQLObjectType, GraphQLString, GraphQLList } from "graphql";
 import { globalIdField } from "graphql-relay";
 
 import TeamType from "../team/TeamType";
 import Team from "../team/TeamModel";
+import { registerTypeLoader, nodeInterface } from "../node/typeRegister";
+
+import { load } from "./UserLoader";
 
 const UserType = new GraphQLObjectType({
   name: "User",
@@ -41,6 +38,9 @@ const UserType = new GraphQLObjectType({
       resolve: (user) => user?.kind || [],
     },
   }),
+  interfaces: () => [nodeInterface],
 });
+
+registerTypeLoader(UserType, load);
 
 export default UserType;
