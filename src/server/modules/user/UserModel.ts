@@ -1,4 +1,4 @@
-import mongoose, { Document } from "mongoose";
+import mongoose, { Document, Model } from "mongoose";
 import bcrypt from "bcrypt";
 
 const { ObjectId } = mongoose.Schema.Types;
@@ -32,7 +32,13 @@ const UserSchema = new Schema(
       required: false,
     },
   },
-  { timestamps: true }
+  {
+    collection: "User",
+    timestamps: {
+      createdAt: "createdAt",
+      updatedAt: "updatedAt",
+    },
+  }
 );
 
 export interface IUser extends Document {
@@ -57,4 +63,6 @@ UserSchema.methods = {
   },
 };
 
-export default mongoose.model("User", UserSchema);
+const UserModel: Model<IUser> = mongoose.model("User", UserSchema);
+
+export default UserModel;

@@ -41,6 +41,6 @@ const UserType = new GraphQLObjectType({
   interfaces: () => [nodeInterface],
 });
 
-export default UserType;
-
 registerTypeLoader(UserType, load);
+
+export default UserType;

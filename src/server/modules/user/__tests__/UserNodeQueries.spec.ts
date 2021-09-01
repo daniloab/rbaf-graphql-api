@@ -51,5 +51,5 @@ it("should return an user info", async () => {
   const result = await graphql(schema, query, rootValue, context, variables);
 
   expect(result.errors).toBeUndefined();
-  expect(result.data.user.node.name).toBe(player.name);
+  expect(result.data.user.name).toBe(player.name);
 });
