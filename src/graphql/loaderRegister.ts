@@ -2,6 +2,9 @@ export interface DataLoaders {
   UserLoader: ReturnType<
     typeof import("../server/modules/user/UserLoader").getLoader
   >;
+  TeamLoader: ReturnType<
+    typeof import("../server/modules/team/TeamLoader").getLoader
+  >;
 }
 
 const loaders: {

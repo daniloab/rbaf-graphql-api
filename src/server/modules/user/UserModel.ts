@@ -1,5 +1,7 @@
-import mongoose, { Document, Model } from "mongoose";
+import mongoose, { Document, Model, Types } from "mongoose";
 import bcrypt from "bcrypt";
+
+import { ITeam } from "../team/TeamModel";
 
 const { ObjectId } = mongoose.Schema.Types;
 const Schema = mongoose.Schema;
@@ -50,6 +52,7 @@ export interface IUser extends Document {
   kind: string[];
   authenticate: (plainTextPassword: string) => boolean;
   encryptPassword: (password: string | undefined) => string;
+  team: Types.ObjectId | ITeam;
   createdAt: Date;
   updatedAt: Date;
 }
