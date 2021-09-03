@@ -1,23 +1,41 @@
-import jwt from 'jsonwebtoken'
-import { User } from './models'
-import { jwtSecret } from './config'
+import jwt from "jsonwebtoken";
+import { User } from "./models";
+import { jwtSecret } from "./config";
+import { IUser } from "./modules/user/UserModel";
+import { ITeam } from "./modules/team/TeamModel";
+import { getUser } from "./getUser";
 
-export async function getUser (token) {
-  if (!token) return { user: null }
+export const auth = async (ctx, next) => {
+  const { authorization, domainname } = ctx.header;
 
-  try {
-    const decodedToken = jwt.verify(token.substring(4), jwtSecret)
+  const result = await getUser({ authorization, domainname });
 
-    const user = await User.findOne({ _id: decodedToken.id })
+  const { unauthorized, user, team } = result;
 
-    return {
-      user,
-    }
-  } catch (err) {
-    return { user: null }
+  if (unauthorized) {
+    ctx.error = 401;
+    ctx.body = {
+      data: null,
+      errors: [
+        {
+          message: "Invalid session",
+          severity: "WARNING",
+        },
+      ],
+    };
+    return;
   }
-}
 
-export function generateToken (user) {
-  return `JWT ${jwt.sign({ id: user._id }, jwtSecret)}`
-}
+  ctx.user = user;
+  ctx.team = team;
+
+  await next();
+};
+
+type GenerateTokenArgs = {
+  user: IUser;
+};
+
+export const generateToken = ({ user }: GenerateTokenArgs) => {
+  return `JWT ${jwt.sign({ id: user._id }, jwtSecret)}`;
+};
