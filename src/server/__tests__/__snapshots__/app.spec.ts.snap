@@ -10,7 +10,15 @@ Object {
 }
 `;
 
-exports[`should return errors for authorization null 1`] = `
+exports[`should return 200 but user not logged since is a request only with domainname 1`] = `
+Object {
+  "data": Object {
+    "me": null,
+  },
+}
+`;
+
+exports[`should return errors for authorization and domainname null 1`] = `
 Object {
   "data": null,
   "errors": Array [

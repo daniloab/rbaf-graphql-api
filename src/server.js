@@ -20,16 +20,18 @@ var logger = log4js.getLogger();
 
   const server = createServer(app.callback());
 
+  console.log("process.env.PORT", process.env.PORT);
+
   server.listen(process.env.PORT, () => {
-    logger.info("##########################################################");
-    logger.info("#####               STARTING SERVER                  #####");
-    logger.info("##########################################################\n");
-    logger.info(
+    console.log("##########################################################");
+    console.log("#####               STARTING SERVER                  #####");
+    console.log("##########################################################\n");
+    console.log(
       `App running on ${environment.toUpperCase()} mode and listening on port ${
         serverConf.SERVER_PORT
       } ...`
     );
-    logger.info(
+    console.log(
       `GraphQL Server is now running on http://localhost:${process.env.PORT}/graphql`
     );
   });
