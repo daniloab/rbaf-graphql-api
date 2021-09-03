@@ -8,6 +8,13 @@ const teamSchema = new Schema(
       type: String,
       required: "name is required",
     },
+    domainName: {
+      type: String,
+      description: "The name of the domain to be used on application",
+      unique: true,
+      lowercase: true,
+      trim: true,
+    },
   },
   {
     collection: "Team",
@@ -20,6 +27,7 @@ const teamSchema = new Schema(
 
 export interface ITeam extends Document {
   name: string;
+  domainName: string;
   createdAt: Date;
   updatedAt: Date;
 }
