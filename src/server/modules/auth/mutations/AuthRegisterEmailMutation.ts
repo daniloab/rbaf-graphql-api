@@ -5,7 +5,7 @@ import User from "../../user/UserModel";
 import { generateToken } from "../../../auth";
 
 export default mutationWithClientMutationId({
-  name: "RegisterEmail",
+  name: "AuthRegisterEmail",
   inputFields: {
     name: {
       type: new GraphQLNonNull(GraphQLString),
@@ -17,36 +17,30 @@ export default mutationWithClientMutationId({
       type: new GraphQLNonNull(GraphQLString),
     },
   },
-  mutateAndGetPayload: async (
-    { name, username, email, password, team },
-    ctx
-  ) => {
-    let user = await User.findOne({ email: email.toLowerCase() });
+  mutateAndGetPayload: async ({ name, email, password }, ctx) => {
+    const { team } = ctx;
 
-    if (user) {
+    let hasUser = await User.findOne({
+      email: email.trim().toLowerCase(),
+      team: team._id,
+    });
+
+    if (hasUser) {
       return {
         token: null,
-        error: "EMAIL_ALREADY_IN_USE",
+        error: "User already exists",
       };
     }
 
-    if (!team) {
-      return {
-        token: null,
-        error: "YOU_NEED_A_TEAM",
-      };
-    }
-
-    user = new User({
+    const user = await new User({
       name,
-      username,
       email,
       password,
-    });
-    await user.save();
+      team: team._id,
+    }).save();
 
     return {
-      token: generateToken(user),
+      token: generateToken({ user }),
       error: null,
     };
   },

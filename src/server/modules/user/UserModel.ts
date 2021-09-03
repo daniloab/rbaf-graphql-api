@@ -14,19 +14,20 @@ const UserSchema = new Schema(
     },
     username: {
       type: String,
-      required: "username is required",
+      required: false,
     },
     email: {
       type: String,
-      required: "name is required",
+      required: "email is required",
     },
     password: {
       type: String,
-      required: "name is required",
+      required: "password is required",
     },
     team: {
       type: ObjectId,
       ref: "Team",
+      required: true,
     },
     kind: {
       type: [String],
