@@ -18,5 +18,6 @@ export const getContext = async (ctx: ContextVars) => {
     req: ctx.req,
     dataloaders,
     user: ctx.user,
+    team: ctx.team,
   } as GraphQLContext;
 };
