@@ -2,9 +2,9 @@
 
 exports[`should create a new user 1`] = `
 Object {
-  "AuthRegisterEmail": Object {
+  "UserRegisterEmailByEmail": Object {
     "error": "EMPTY",
-    "token": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMzE5NDM3Mzc2YjlkOTk5MTljYmFhZCIsImlhdCI6MTYzMDYzOTE1OX0.9yel6VhSwMBkodK_RyVm3EeVGIxSVwt0iAZkzwKsvGY",
+    "token": "FROZEN-TOKEN",
   },
 }
 `;
