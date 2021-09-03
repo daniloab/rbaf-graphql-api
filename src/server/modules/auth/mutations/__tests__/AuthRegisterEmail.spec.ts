@@ -25,7 +25,7 @@ it("should create a new user", async () => {
 
   const query = `
     mutation M ($name: String!, $email: String!, $password: String!, ) {
-      AuthRegisterEmail (input: { name: $name, email: $email, password: $password }) {
+      UserRegisterEmailByEmail (input: { name: $name, email: $email, password: $password }) {
         error
         token
       }
@@ -44,9 +44,9 @@ it("should create a new user", async () => {
   const result = await graphql(schema, query, rootValue, context, variables);
 
   expect(result.errors).toBeUndefined();
-  expect(result.data.AuthRegisterEmail.error).toBeNull();
+  expect(result.data.UserRegisterEmailByEmail.error).toBeNull();
 
-  expect(result.data.AuthRegisterEmail.token).toBeDefined();
+  expect(result.data.UserRegisterEmailByEmail.token).toBeDefined();
 
-  expect(sanitizeTestObject(result.data)).toMatchSnapshot();
+  expect(sanitizeTestObject(result.data, ["token"])).toMatchSnapshot();
 });

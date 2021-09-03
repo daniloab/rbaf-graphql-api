@@ -16,46 +16,6 @@ beforeEach(clearDbAndRestartCounters);
 
 afterAll(disconnectMongoose);
 
-it("should return errors for user without team", async () => {
-  const user = await createUser({
-    name: "Danilo",
-    team: null,
-  });
-
-  const token = generateToken({ user });
-
-  // language=GraphQL
-  const query = `
-    query Q {
-      me {
-        name
-      }      
-    }
-  `;
-
-  const variables = {};
-
-  const payload = {
-    query,
-    variables,
-  };
-
-  const response = await request(app.callback())
-    .post("/graphql")
-    .set({
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      Authorization: token,
-    })
-    .send(JSON.stringify(payload));
-
-  expect(response.body.data).toBeNull();
-  expect(response.body.errors).toHaveLength(1);
-  expect(response.body.errors[0].message).toBe("Invalid session");
-
-  expect(response.body).toMatchSnapshot();
-});
-
 it("should return errors for user not existent", async () => {
   const user = {
     _id: "613184269551fa4fb4e0f08c",
