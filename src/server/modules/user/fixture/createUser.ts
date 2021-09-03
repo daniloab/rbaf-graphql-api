@@ -10,7 +10,7 @@ export const createUser = async (args: DeepPartial<IUser> = {}) => {
 
   let { team, ...payload } = args;
 
-  if (team == undefined) {
+  if (team === undefined) {
     team = await getOrCreate(Team, createTeam);
   }
 

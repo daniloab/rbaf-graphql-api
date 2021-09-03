@@ -5,8 +5,15 @@ import { DeepPartial } from "../../../../../test/deepPartial";
 export const createTeam = (args: DeepPartial<ITeam> = {}) => {
   const i = getCounter("team");
 
+  let { domainName, ...payload } = args;
+
+  if (domainName === undefined) {
+    domainName = `test${i}.com`;
+  }
+
   return new Team({
     name: `team#${i}`,
-    ...args,
+    domainName,
+    ...payload,
   }).save();
 };

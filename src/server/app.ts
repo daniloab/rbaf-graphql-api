@@ -7,15 +7,18 @@ import Router from "koa-router";
 import cors from "@koa/cors";
 import bodyParser from "koa-bodyparser";
 
-import { getUser } from "./auth";
+import { getUser } from "./getUser";
 import { schema } from "./schema";
+
+import { auth } from "./auth";
 
 const app = new Koa();
 const router = new Router();
 
-const graphqlSettingsPerReq = async (req) => {
-  const { user } = await getUser(req.header.authorization);
+router.use(auth);
 
+const graphqlSettingsPerReq = async (req, ctx, koaContext) => {
+  const { user, team } = koaContext;
   const dataloaders = getDataloaders();
 
   return {
@@ -23,6 +26,7 @@ const graphqlSettingsPerReq = async (req) => {
     schema,
     context: {
       user,
+      team,
       req,
       dataloaders,
     },

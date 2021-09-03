@@ -9,3 +9,63 @@ Object {
   },
 }
 `;
+
+exports[`should return errors for authorization null 1`] = `
+Object {
+  "data": null,
+  "errors": Array [
+    Object {
+      "message": "Invalid session",
+      "severity": "WARNING",
+    },
+  ],
+}
+`;
+
+exports[`should return errors for user not existent 1`] = `
+Object {
+  "data": null,
+  "errors": Array [
+    Object {
+      "message": "Invalid session",
+      "severity": "WARNING",
+    },
+  ],
+}
+`;
+
+exports[`should return errors for user without team 1`] = `
+Object {
+  "data": null,
+  "errors": Array [
+    Object {
+      "message": "Invalid session",
+      "severity": "WARNING",
+    },
+  ],
+}
+`;
+
+exports[`should return errors if domain name is null 1`] = `
+Object {
+  "data": null,
+  "errors": Array [
+    Object {
+      "message": "Invalid session",
+      "severity": "WARNING",
+    },
+  ],
+}
+`;
+
+exports[`should return errors if domain name not exist 1`] = `
+Object {
+  "data": null,
+  "errors": Array [
+    Object {
+      "message": "Invalid session",
+      "severity": "WARNING",
+    },
+  ],
+}
+`;
