@@ -1,7 +1,7 @@
 import { GraphQLObjectType } from "graphql";
 
 import LoginEmail from "../modules/auth/mutations/LoginEmailMutation";
-import RegisterEmail from "../modules/auth/mutations/RegisterEmailMutation";
+import RegisterEmail from "../modules/auth/mutations/AuthRegisterEmailMutation";
 import ChangePassword from "../modules/auth/mutations/ChangePasswordMutation";
 
 export default new GraphQLObjectType({

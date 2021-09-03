@@ -9,14 +9,6 @@ type GetUserArgs = {
 };
 
 export const getUser = async ({ authorization, domainname }: GetUserArgs) => {
-  if (!authorization) {
-    return {
-      unauthorized: true,
-      user: null,
-      team: null,
-    };
-  }
-
   if (!domainname) {
     return {
       unauthorized: true,
@@ -34,6 +26,14 @@ export const getUser = async ({ authorization, domainname }: GetUserArgs) => {
       unauthorized: true,
       user: null,
       team: null,
+    };
+  }
+
+  if (!authorization) {
+    return {
+      unauthorized: false,
+      user: null,
+      team: team,
     };
   }
 

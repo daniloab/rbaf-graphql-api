@@ -12,6 +12,8 @@ export const auth = async (ctx, next) => {
 
   const { unauthorized, user, team } = result;
 
+  console.log("unauthorized", unauthorized);
+
   if (unauthorized) {
     ctx.error = 401;
     ctx.body = {

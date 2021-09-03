@@ -95,7 +95,7 @@ it("should return errors for user not existent", async () => {
   expect(response.body).toMatchSnapshot();
 });
 
-it("should return errors for authorization null", async () => {
+it("should return errors for authorization and domainname null", async () => {
   const user = {
     _id: "613184269551fa4fb4e0f08c",
   };
@@ -122,6 +122,7 @@ it("should return errors for authorization null", async () => {
       Accept: "application/json",
       "Content-Type": "application/json",
       Authorization: null,
+      domainname: null,
     })
     .send(JSON.stringify(payload));
 
@@ -212,7 +213,7 @@ it("should return errors if domain name not exist", async () => {
   expect(response.body).toMatchSnapshot();
 });
 
-it.only("should return 200 and return logged user", async () => {
+it("should return 200 and return logged user", async () => {
   const team = await createTeam();
   const user = await createUser({
     name: "Danilo",
@@ -248,6 +249,39 @@ it.only("should return 200 and return logged user", async () => {
     .send(JSON.stringify(payload));
 
   expect(response.body.data.me.name).toBe(user.name);
+
+  expect(response.body).toMatchSnapshot();
+});
+
+it("should return 200 but user not logged since is a request only with domainname", async () => {
+  const team = await createTeam();
+
+  // language=GraphQL
+  const query = `
+    query Q {
+      me {
+        name
+      }      
+    }
+  `;
+
+  const variables = {};
+
+  const payload = {
+    query,
+    variables,
+  };
+
+  const response = await request(app.callback())
+    .post("/graphql")
+    .set({
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      domainName: team.domainName,
+    })
+    .send(JSON.stringify(payload));
+
+  expect(response.body.data.me).toBeNull();
 
   expect(response.body).toMatchSnapshot();
 });
