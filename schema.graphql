@@ -1,0 +1,147 @@
+"""Root of ... mutations"""
+type Mutation {
+  UserRegisterEmailByEmail(input: UserRegisterEmailByEmailInput!): UserRegisterEmailByEmailPayload
+}
+
+"""An object with an ID"""
+interface Node {
+  """The id of the object."""
+  id: ID!
+}
+
+"""Information about pagination in a connection."""
+type PageInfoExtended {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
+"""The root of all queries"""
+type Query {
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+
+  """Fetches objects given their IDs"""
+  nodes(
+    """The IDs of objects"""
+    ids: [ID!]!
+  ): [Node]!
+  version: String
+  me: User
+  users(after: String, first: Int, before: String, last: Int): UserConnection!
+  teams(after: String, first: Int, before: String, last: Int): TeamConnection!
+}
+
+"""team data"""
+type Team implements Node {
+  """The ID of an object"""
+  id: ID!
+  name: String
+}
+
+"""A connection to a list of items."""
+type TeamConnection {
+  """Number of items in this connection"""
+  count: Int
+
+  """
+  A count of the total number of objects in this connection, ignoring pagination.
+    This allows a client to fetch the first five objects by passing "5" as the
+    argument to "first", then fetch the total count so it could display "5 of 83",
+    for example.
+  """
+  totalCount: Int
+
+  """Offset from start"""
+  startCursorOffset: Int!
+
+  """Offset till end"""
+  endCursorOffset: Int!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfoExtended!
+
+  """A list of edges."""
+  edges: [TeamEdge]!
+}
+
+"""An edge in a connection."""
+type TeamEdge {
+  """The item at the end of the edge"""
+  node: Team
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+"""User data"""
+type User implements Node {
+  """The ID of an object"""
+  id: ID!
+  name: String
+  username: String
+  email: String
+  team: Team
+
+  """Kind that this user belongs: coach or player"""
+  kind: [String]
+}
+
+"""A connection to a list of items."""
+type UserConnection {
+  """Number of items in this connection"""
+  count: Int
+
+  """
+  A count of the total number of objects in this connection, ignoring pagination.
+    This allows a client to fetch the first five objects by passing "5" as the
+    argument to "first", then fetch the total count so it could display "5 of 83",
+    for example.
+  """
+  totalCount: Int
+
+  """Offset from start"""
+  startCursorOffset: Int!
+
+  """Offset till end"""
+  endCursorOffset: Int!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfoExtended!
+
+  """A list of edges."""
+  edges: [UserEdge]!
+}
+
+"""An edge in a connection."""
+type UserEdge {
+  """The item at the end of the edge"""
+  node: User
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+input UserRegisterEmailByEmailInput {
+  name: String!
+  email: String!
+  password: String!
+  clientMutationId: String
+}
+
+type UserRegisterEmailByEmailPayload {
+  token: String
+  error: String
+  clientMutationId: String
+}

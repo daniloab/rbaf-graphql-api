@@ -49,6 +49,7 @@
     "@types/webpack-node-externals": "2.5.0",
     "babel-jest": "^27.0.6",
     "babel-loader": "8.2.2",
+    "babel-node": "^0.0.1-security",
     "babel-plugin-require-context-hook": "1.0.0",
     "clean-webpack-plugin": "3.0.0",
     "jest": "^27.0.6",
@@ -65,8 +66,10 @@
     "webpack-node-externals": "2.5.2"
   },
   "scripts": {
+    "b": "babel-node --extensions \".es6,.js,.es,.jsx,.mjs,.ts,.tsx\"",
     "jest": "jest",
-    "start": "webpack --watch --progress --config webpack.config.js"
+    "start": "webpack --watch --progress --config webpack.config.js",
+    "schema": "yarn b webpackx.ts ./scripts/updateSchema.js"
   },
   "resolutions": {
     "babel-core": "7.0.0-bridge.0"
