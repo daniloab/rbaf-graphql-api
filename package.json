@@ -48,7 +48,7 @@
     "@types/webpack-dev-server": "3.11.1",
     "@types/webpack-node-externals": "2.5.0",
     "babel-jest": "^27.0.6",
-    "babel-loader": "8.2.2",
+    "babel-loader": "8.2.3",
     "babel-node": "^0.0.1-security",
     "babel-plugin-require-context-hook": "1.0.0",
     "clean-webpack-plugin": "3.0.0",
