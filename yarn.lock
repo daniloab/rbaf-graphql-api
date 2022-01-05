@@ -1628,12 +1628,13 @@
     "@types/serve-static" "*"
     "@types/webpack" "*"
 
-"@types/webpack-node-externals@2.5.0":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/@types/webpack-node-externals/-/webpack-node-externals-2.5.0.tgz#bcd161af84a4960416e5850e06931b35321c6654"
-  integrity sha512-KaWfhUQlpWknM/CMBKhV7i0vxX/N2xEy3WeaE500s4ZNxC4nLnKB+0F3gD3Fg+5octPq0nn8ZlfFR/P3dSkXpw==
+"@types/webpack-node-externals@2.5.3":
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/@types/webpack-node-externals/-/webpack-node-externals-2.5.3.tgz#921783aadda1fe686db0a70e20e4b9548b5a3cef"
+  integrity sha512-A9JxaR8QXoYT95egET4AmCFuChyTlP8d18ZAnmSHuIMsFdS7QlCQQ8pmN/+FHgLIkm+ViE/VngltT5avLACY9A==
   dependencies:
-    "@types/webpack" "*"
+    "@types/node" "*"
+    webpack "^5"
 
 "@types/webpack-sources@*":
   version "2.1.0"
