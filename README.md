@@ -7,7 +7,7 @@ RBFA API is an api to help teams from football in brazil to managed his dailies 
 
 This project use graphql, graphql-relay, koa framework, jsonwebtoken and others stuffs;
 
-```
+```bash
 # clone repo
 $ https://github.com/daniloab/rbaf-graphql-api.git
 $ cd rbaf-graphql-api
@@ -18,9 +18,13 @@ $ yarn install
 # start project
 $ yarn start
 
-# see on graphi graphql interface on localhost link
+# see on graphiql graphql interface on localhost link
 http://localhost:9001/graphql
+```
 
+## Generating the schema
+```bash
+yarn schema
 ```
 
 ## Queries
