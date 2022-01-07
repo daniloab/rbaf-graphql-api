@@ -6,7 +6,7 @@
   "dependencies": {
     "@entria/graphql-mongo-helpers": "^1.0.1",
     "@entria/graphql-mongoose-loader": "^4.3.2",
-    "@koa/cors": "2",
+    "@koa/cors": "3",
     "bcrypt": "^5.0.1",
     "dataloader": "^1.4.0",
     "dotenv": "^8.0.0",
