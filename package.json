@@ -7,7 +7,7 @@
     "@entria/graphql-mongo-helpers": "^1.0.1",
     "@entria/graphql-mongoose-loader": "^4.3.2",
     "@koa/cors": "2",
-    "bcrypt": "^5.0.0",
+    "bcrypt": "^5.0.1",
     "dataloader": "^1.4.0",
     "dotenv": "^8.0.0",
     "dotenv-safe": "^8.2.0",
