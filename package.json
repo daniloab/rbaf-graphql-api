@@ -16,7 +16,7 @@
     "graphql-relay": "0.7.0",
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.13.4",
-    "koa-bodyparser": "^4.2.1",
+    "koa-bodyparser": "^4.3.0",
     "koa-graphql": "^0.8.0",
     "koa-jwt": "^3.5.1",
     "koa-mount": "^4.0.0",
