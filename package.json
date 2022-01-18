@@ -21,7 +21,7 @@
     "koa-jwt": "^3.5.1",
     "koa-mount": "^4.0.0",
     "koa-router": "^7.4.0",
-    "mongoose": "5.11.18",
+    "mongoose": "6.1.7",
     "prettier": "^2.3.2"
   },
   "devDependencies": {
