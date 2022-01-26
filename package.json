@@ -9,7 +9,7 @@
     "@koa/cors": "2",
     "bcrypt": "^5.0.1",
     "dataloader": "^1.4.0",
-    "dotenv": "^8.0.0",
+    "dotenv": "^14.3.2",
     "dotenv-safe": "^8.2.0",
     "get-graphql-schema": "^2.1.2",
     "graphql": "^14.7.0",
