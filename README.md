@@ -15,6 +15,9 @@ $ cd rbaf-graphql-api
 # install dependencies
 $ yarn install
 
+# copy .env file
+$ cp .env.example .env
+
 # start project
 $ yarn start
 
