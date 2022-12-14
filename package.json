@@ -63,7 +63,7 @@
     "webpack-cli": "4.9.1",
     "webpack-dev-server": "4.7.2",
     "webpack-merge": "5.7.3",
-    "webpack-node-externals": "2.5.2"
+    "webpack-node-externals": "3.0.0"
   },
   "scripts": {
     "b": "babel-node --extensions \".es6,.js,.es,.jsx,.mjs,.ts,.tsx\"",
